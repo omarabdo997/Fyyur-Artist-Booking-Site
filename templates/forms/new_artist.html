@@ -1,0 +1,111 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New Artist{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form">
+      <h3 class="form-heading">List a new artist</h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name(class_ = 'form-control', autofocus = true) }}
+        <ul class="text-danger list-group">
+          {% for error in form.name.errors %}
+            <li class="list-group-item">{{error}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="form-group">
+          <label>City & State</label>
+          <div class="form-inline">
+            <div class="form-group">
+              {{ form.city(class_ = 'form-control', placeholder='City', autofocus = true) }}
+              
+            </div>
+            <div class="form-group">
+              {{ form.state(class_ = 'form-control', placeholder='State', autofocus = true) }}
+              
+            </div>
+          </div>
+          <ul class="text-danger list-group">
+            {% for error in form.city.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+            {% for error in form.state.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+          </ul>
+          
+      </div>
+      <div class="form-group">
+          <label for="phone">Phone</label>
+          {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
+          <ul class="text-danger list-group">
+            {% for error in form.phone.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      <div class="form-group">
+        <label for="genres">Genres</label>
+        <small>Ctrl+Click to select multiple</small>
+        {{ form.genres(class_ = 'form-control', placeholder='Genres, separated by commas', id=form.state, autofocus = true) }}
+        <ul class="text-danger list-group">
+          {% for error in form.genres.errors %}
+            <li class="list-group-item">{{error}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="image_link">Image Link</label>
+        {{ form.image_link(class_ = 'form-control', placeholder='http://',autofocus = true) }}
+        <ul class="text-danger list-group">
+          {% for error in form.image_link.errors %}
+            <li class="list-group-item">{{error}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        {{ form.website(class_ = 'form-control', placeholder='http://',autofocus = true) }}
+        <ul class="text-danger list-group">
+          {% for error in form.website.errors %}
+            <li class="list-group-item">{{error}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="form-group">
+          <label for="facebook_link">Facebook Link</label>
+          {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
+          <ul class="text-danger list-group">
+            {% for error in form.facebook_link.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group ">
+          
+          {{ form.seeking_venue(class_ = '', autofocus = true) }}
+          <label for="seeking_venue">Seeking Venue</label>
+          <ul class="text-danger list-group">
+            {% for error in form.seeking_venue.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="seeking_description">Seeking Description</label>
+          
+          {{ form.seeking_description(class_ = 'form-control ' ,autofocus = true) }}
+         
+          
+          <ul class="text-danger list-group">
+            {% for error in form.seeking_description.errors %}
+              <li class="list-group-item">{{error}}</li>
+            {% endfor %}
+          </ul>
+        </div>  
+      {{form.submit_button(class_="btn btn-primary btn-lg btn-block")}}  
+      {{form.csrf_token}}
+      
+    </form>
+  </div>
+{% endblock %}
